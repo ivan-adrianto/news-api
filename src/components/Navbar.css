@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+body {
+    font-family: 'Lato' !important;
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: 50px;
+    margin-right: 12px;
+}
+
+.navbar-brand h4 {
+    font-weight: 700;
+    font-size: 30px;
+}
