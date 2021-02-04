@@ -6,7 +6,7 @@ import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import Navbar from "./Navbar";
 
-function HeadlineHome({ headlineRequest, isLoading, news }) {
+function HeadlineHome({ headlineRequest, isLoading, news, isError, errorData }) {
   useEffect(() => {
     headlineRequest();
   }, []);
@@ -15,6 +15,8 @@ function HeadlineHome({ headlineRequest, isLoading, news }) {
     <div>
       <Navbar />
       <div className="container">
+        {errorData.message === 'Network Error' && <h1>Anda sedang di luar jaringan</h1>}
+        {errorData === 'server down' && <h1>Server sedang tidak bisa diakses. Coba lagi nanti</h1> }
         {isLoading ? (
           <div className="sk-circle">
             {loadingMap.map((spinner, index) => (
@@ -62,6 +64,8 @@ const stateProps = (initialState) => {
   return {
     news: initialState.HeadlineReducers.data,
     isLoading: initialState.HeadlineReducers.isLoading,
+    isError: initialState.HeadlineReducers.isError,
+    errorData: initialState.HeadlineReducers.errorData,
   };
 };
 

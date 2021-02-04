@@ -3,6 +3,7 @@ import HeadlineTypes from '../actions/HeadlinesTypes'
 const initialState = {
     isLoading: false,
     isError: false,
+    errorData: '',
     data: [],
 }
 
@@ -26,6 +27,7 @@ const HeadlineReducers = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isError: true,
+                errorData: action.error
             }
         }
         default:
