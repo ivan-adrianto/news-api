@@ -11,6 +11,8 @@ function HeadlineHome({ headlineRequest, isLoading, news, isError, errorData }) 
     headlineRequest();
   }, []);
   let loadingMap = "123456789012".split("");
+  console.log(errorData)
+  
   return (
     <div>
       <Navbar />
