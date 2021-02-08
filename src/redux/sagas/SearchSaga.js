@@ -8,7 +8,7 @@ function* searchWatcher() {
 
 function* searchWorker(action) {
     try {
-        const response = yield searchApi(action.payload)
+        const response = yield searchApi(action.keyword)
         const news = response.data.articles
         yield put ({type: searchTypes.SEARCH_SUCCESS, payload: news})
     }

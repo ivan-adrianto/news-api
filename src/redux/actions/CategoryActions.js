@@ -1,5 +1,5 @@
-import { categoryTypes } from "./CategoryTypes"
+// import categoryTypes from "./CategoryTypes"
 
-export const categoryAction = payload => {
-    return {type: categoryTypes.CATEGORY_REQUEST, payload}
-}
+// export const categoryAction = payload => {
+//     return {type: categoryTypes.CATEGORY_REQUEST, payload}
+// }

@@ -1,7 +1,7 @@
-const searchTypes = {
-    SEARCH_REQUEST : "SEARCH_REQUEST",
-    SEARCH_SUCCESS : "SEARCH_SUCCESS",
-    SEARCH_FAILED : "SEARCH_FAILED",
-}
+import { createTypes } from "reduxsauce";
 
-export default searchTypes
+export default createTypes (
+    `SEARCH_REQUEST
+    SEARCH_SUCCESS
+    SEARCH_FAILED`
+)

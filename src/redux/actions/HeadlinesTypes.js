@@ -1,7 +1,7 @@
-const HeadlineTypes = {
-    HEADLINE_REQUEST: "HEADLINE_REQUEST",
-    HEADLINE_SUCCESS: "HEADLINE_SUCCESS",
-    HEADLINE_FAILED: "HEADLINE_FAILED"
-}
+import { createTypes } from "reduxsauce";
 
-export default HeadlineTypes
+export default createTypes(
+    `HEADLINE_REQUEST
+    HEADLINE_SUCCESS
+    HEADLINE_FAILED`
+)

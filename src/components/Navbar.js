@@ -6,6 +6,7 @@ import { searchAction } from "../redux/actions/SearchActions";
 import "./Navbar.css";
 import * as Sentry from "@sentry/react";
 import { sentryError } from  './Helper'
+import Creators from "../redux/actions/actions";
 
 function Navbar({ searchRequest, news }) {
   const [keyword, setKeyword] = useState("");
@@ -110,7 +111,7 @@ const stateProps = (initialState) => {
 
 const dispatchProps = (dispatch) => {
   return {
-    searchRequest: (keyword) => dispatch(searchAction(keyword)),
+    searchRequest: (keyword) => dispatch(Creators.searchRequest(keyword)),
   };
 };
 
