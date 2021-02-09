@@ -28,8 +28,5 @@ function* headlineWorker() {
     yield put({ type: headline.HEADLINE_FAILED, error });
   }
 }
-// function* headlineWorker() {
-
-//   }
 
 export default headlineWatcher;
