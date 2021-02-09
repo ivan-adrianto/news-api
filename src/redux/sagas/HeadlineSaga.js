@@ -1,10 +1,10 @@
-import HeadlineTypes from "../actions/HeadlinesTypes";
+import { headline } from "../reducers/HeadlineReducers";
 import { delay, put, race, takeLatest } from "redux-saga/effects";
 import { headlinesApi } from "../../api/HeadlinesApi";
 import { sentryError } from "../../components/Helper";
 
 function* headlineWatcher() {
-  yield takeLatest(HeadlineTypes.HEADLINE_REQUEST, headlineWorker);
+  yield takeLatest(headline.HEADLINE_REQUEST, headlineWorker);
 }
 
 function* headlineWorker() {
@@ -16,16 +16,16 @@ function* headlineWorker() {
 
     if (response)
       yield put({
-        type: HeadlineTypes.HEADLINE_SUCCESS,
+        type: headline.HEADLINE_SUCCESS,
         payload: response.data.articles,
       });
     else {
       sentryError("server down", "headline fetch");
-      yield put({ type: HeadlineTypes.HEADLINE_FAILED, error: "server down" });
+      yield put({ type: headline.HEADLINE_FAILED, error: "server down" });
     }
   } catch (error) {
     sentryError("failed to fetch headline", "saga headline");
-    yield put({ type: HeadlineTypes.HEADLINE_FAILED, error });
+    yield put({ type: headline.HEADLINE_FAILED, error });
   }
 }
 // function* headlineWorker() {

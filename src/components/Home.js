@@ -5,13 +5,13 @@ import "./Home.css";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import Navbar from "./Navbar";
+import Creators from "../redux/reducers/HeadlineReducers";
 
 function HeadlineHome({ headlineRequest, isLoading, news, isError, errorData }) {
   useEffect(() => {
     headlineRequest();
   }, []);
   let loadingMap = "123456789012".split("");
-  console.log(errorData)
   
   return (
     <div>
@@ -64,16 +64,16 @@ function HeadlineHome({ headlineRequest, isLoading, news, isError, errorData }) 
 
 const stateProps = (initialState) => {
   return {
-    news: initialState.HeadlineReducers.data,
-    isLoading: initialState.HeadlineReducers.isLoading,
-    isError: initialState.HeadlineReducers.isError,
-    errorData: initialState.HeadlineReducers.errorData,
+    news: initialState.headline.data,
+    isLoading: initialState.headline.isLoading,
+    isError: initialState.headline.isError,
+    errorData: initialState.headline.errorData,
   };
 };
 
 const dispatchProps = (dispatch) => {
   return {
-    headlineRequest: () => dispatch({ type: HeadlineTypes.HEADLINE_REQUEST }),
+    headlineRequest: () => dispatch(Creators.headlineRequest()),
   };
 };
 

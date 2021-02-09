@@ -1,6 +1,6 @@
 import { put, takeLatest } from "redux-saga/effects";
 import { searchApi } from "../../api/SearchApi";
-import searchTypes from "../actions/SearchTypes";
+import { searchTypes } from "../reducers/SearchReducer";
 
 function* searchWatcher() {
     yield takeLatest(searchTypes.SEARCH_REQUEST, searchWorker)

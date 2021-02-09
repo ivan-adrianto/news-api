@@ -1,6 +1,6 @@
 import { put, takeLatest } from "redux-saga/effects";
 import { categoryApi } from "../../api/CategoryApi";
-import categoryTypes from "../actions/CategoryTypes";
+import { categoryTypes } from "../reducers/CategoryReducers";
 
 function* categoryWatcher (){
     yield takeLatest(categoryTypes.CATEGORY_REQUEST, categoryWorker)    

@@ -1,20 +1,28 @@
-import { createReducer } from "reduxsauce";
-import categoryTypes from "../actions/CategoryTypes";
+import { createActions, createReducer } from "reduxsauce";
 
-const initialState = {
+const { Types, Creators } = createActions({
+  categoryRequest: ["category"],
+  categorySuccess: ["data"],
+  categoryFailed: ["error"],
+});
+
+export const categoryTypes = Types;
+export default Creators;
+
+const INITIAL_STATE = {
   isLoading: false,
   isError: false,
   data: [],
 };
 
-const request = (state = initialState, action) => {
+const request = (state = INITIAL_STATE, action) => {
   return {
     ...state,
     isLoading: true,
   };
 };
 
-const success = (state = initialState, action) => {
+const success = (state = INITIAL_STATE, action) => {
   return {
     ...state,
     isLoading: false,
@@ -22,7 +30,7 @@ const success = (state = initialState, action) => {
   };
 };
 
-const failed = (state = initialState, action) => {
+const failed = (state = INITIAL_STATE, action) => {
   return {
     ...state,
     isLoading: false,
@@ -30,41 +38,8 @@ const failed = (state = initialState, action) => {
   };
 };
 
-const handlers = {
-    [categoryTypes.CATEGORY_REQUEST]: request,
-    [categoryTypes.CATEGORY_SUCCESS]: success,
-    [categoryTypes.CATEGORY_FAILED]: failed,
-}
-
-export default createReducer(initialState, handlers)
-
-// const categoryReducers = (state = initialState, action) => {
-//   switch (action.type) {
-//     case categoryTypes.CATEGORY_REQUEST: {
-//       return {
-//         ...state,
-//         isLoading: true,
-//       };
-//     }
-//     case categoryTypes.CATEGORY_SUCCESS: {
-//       return {
-//         ...state,
-//         isLoading: false,
-//         data: action.payload,
-//       };
-//     }
-//     case categoryTypes.CATEGORY_FAILED: {
-//       return {
-//         ...state,
-//         isLoading: false,
-//         isError: true,
-//       };
-//     }
-//     default:
-//       return {
-//         ...state,
-//       };
-//   }
-// };
-
-// export default categoryReducers;
+export const categoryReducer = createReducer(INITIAL_STATE, {
+  [Types.CATEGORY_REQUEST]: request,
+  [Types.CATEGORY_SUCCESS]: success,
+  [Types.CATEGORY_FAILED]: failed,
+});

@@ -42,8 +42,8 @@ function SearchNews({ news, isLoading }) {
 
 const stateProps = (initialState) => {
   return {
-    news: initialState.searchReducer.data,
-    isLoading: initialState.searchReducer.isLoading,
+    news: initialState.search.data,
+    isLoading: initialState.search.isLoading,
   };
 };
 

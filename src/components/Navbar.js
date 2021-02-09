@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import newsIcon from "../img/newspaper.png";
-import { searchAction } from "../redux/actions/SearchActions";
 import "./Navbar.css";
 import * as Sentry from "@sentry/react";
 import { sentryError } from  './Helper'
-import Creators from "../redux/actions/actions";
+import Creators from "../redux/reducers/SearchReducer";
 
 function Navbar({ searchRequest, news }) {
   const [keyword, setKeyword] = useState("");
@@ -105,7 +104,7 @@ function Navbar({ searchRequest, news }) {
 
 const stateProps = (initialState) => {
   return {
-    news: initialState.searchReducer.data,
+    news: initialState.search.data,
   };
 };
 

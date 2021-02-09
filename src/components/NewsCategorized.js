@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import Creators from "../redux/actions/actions";
+import Creators from "../redux/reducers/CategoryReducers";
 import Navbar from "./Navbar";
 
 function NewsCategorized({ news, categoryRequest, isLoading }) {
@@ -43,10 +43,10 @@ function NewsCategorized({ news, categoryRequest, isLoading }) {
   );
 }
 
-const stateProps = (initialState) => {
+const stateProps = (state) => {
   return {
-    news: initialState.categoryReducers.data,
-    isLoading: initialState.categoryReducers.isLoading,
+    news: state.category.data,
+    isLoading: state.category.isLoading,
   };
 };
 const dispatchProps = (dispatch) => {
