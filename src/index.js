@@ -15,14 +15,12 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 ReactDOM.render(
-  <React.StrictMode>
     <Sentry.ErrorBoundary showDialog={true}>
       <BrowserRouter>
         <Provider store={globalStore}>
           <App />
         </Provider>
       </BrowserRouter>
-    </Sentry.ErrorBoundary>
-  </React.StrictMode>,
+    </Sentry.ErrorBoundary>,
   document.getElementById("root")
 );
