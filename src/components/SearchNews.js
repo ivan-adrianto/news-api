@@ -1,10 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 
-function SearchNews({ news, isLoading }) {
+function SearchNews() {
 
   let loadingMap = "123456789012".split("");
+  const news = useSelector(state => state.search.data)
+  const isLoading = useSelector(state => state.search.isLoading)
 
   return (
     <div>
@@ -40,11 +42,4 @@ function SearchNews({ news, isLoading }) {
   );
 }
 
-const stateProps = (initialState) => {
-  return {
-    news: initialState.search.data,
-    isLoading: initialState.search.isLoading,
-  };
-};
-
-export default connect(stateProps)(SearchNews);
+export default SearchNews;

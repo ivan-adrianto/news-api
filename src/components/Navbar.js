@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import newsIcon from "../img/newspaper.png";
 import "./Navbar.css";
@@ -7,11 +7,11 @@ import * as Sentry from "@sentry/react";
 import { sentryError } from  './Helper'
 import Creators from "../redux/reducers/SearchReducer";
 
-function Navbar({ searchRequest, news }) {
+function Navbar() {
   const [keyword, setKeyword] = useState("");
   const [value, setValue] = useState("");
   const history = useHistory();
-  
+  const dispatch = useDispatch()
 
   const handleInput = (e) => {
     if(e.target.value.match(/[^\w\s]/gi)){
@@ -27,7 +27,7 @@ function Navbar({ searchRequest, news }) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    searchRequest(keyword);
+    dispatch(Creators.searchRequest(keyword));
     history.push("/search");
   };
 
@@ -102,16 +102,4 @@ function Navbar({ searchRequest, news }) {
   );
 }
 
-const stateProps = (initialState) => {
-  return {
-    news: initialState.search.data,
-  };
-};
-
-const dispatchProps = (dispatch) => {
-  return {
-    searchRequest: (keyword) => dispatch(Creators.searchRequest(keyword)),
-  };
-};
-
-export default connect(stateProps, dispatchProps)(Navbar);
+export default Navbar

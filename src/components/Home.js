@@ -1,17 +1,24 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./Home.css";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import Navbar from "./Navbar";
 import Creators from "../redux/reducers/HeadlineReducers";
 
-function HeadlineHome({ headlineRequest, isLoading, news, isError, errorData }) {
+function HeadlineHome() {
+
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    headlineRequest();
+    dispatch(Creators.headlineRequest());
   }, []);
   let loadingMap = "123456789012".split("");
   
+  const news = useSelector(state => state.headline.data)
+  const isLoading = useSelector(state => state.headline.isLoading)
+  const errorData = useSelector(state => state.headline.errorData)
+
   return (
     <div>
       <Navbar />
@@ -61,19 +68,4 @@ function HeadlineHome({ headlineRequest, isLoading, news, isError, errorData }) 
   );
 }
 
-const stateProps = (initialState) => {
-  return {
-    news: initialState.headline.data,
-    isLoading: initialState.headline.isLoading,
-    isError: initialState.headline.isError,
-    errorData: initialState.headline.errorData,
-  };
-};
-
-const dispatchProps = (dispatch) => {
-  return {
-    headlineRequest: () => dispatch(Creators.headlineRequest()),
-  };
-};
-
-export default connect(stateProps, dispatchProps)(HeadlineHome);
+export default HeadlineHome;
