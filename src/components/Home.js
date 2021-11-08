@@ -12,7 +12,7 @@ function HeadlineHome() {
 
   useEffect(() => {
     dispatch(Creators.headlineRequest());
-  }, []);
+  }, [dispatch]);
   let loadingMap = "123456789012".split("");
   
   const news = useSelector(state => state.headline.data)

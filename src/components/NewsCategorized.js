@@ -12,7 +12,7 @@ function NewsCategorized() {
   const category = params.id;
   useEffect(() => {
     dispatch(Creators.categoryRequest(category));
-  }, [category]);
+  }, [category, dispatch]);
 
   let loadingMap = "123456789012".split("");
 

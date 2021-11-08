@@ -9,7 +9,7 @@ function* headlineWatcher() {
 
 function* headlineWorker() {
   try {
-    const { response, timeout } = yield race({
+    const { response } = yield race({
       response: headlinesApi(),
       timeout: delay(10000),
     });
